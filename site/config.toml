@@ -2,3 +2,8 @@ baseurl = "/"
 languageCode = "en-us"
 title = "Homepage"
 theme = "hugo-universal-theme"
+
+
+[params]
+   # Format dates with Go's time formatting
+   date_format = "January 2, 2006"
