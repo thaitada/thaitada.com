@@ -1,0 +1,23 @@
+@media only screen and (max-width: 500px) {
+    /* body {
+        background-color: lightblue;
+    } */
+
+    .sidebar {
+        /* background-color: lightblue; */
+        /* display: none; */
+        h1 {
+            font-size: 2.0rem;
+            /* text-align: left; */
+        }
+        
+    }
+
+    /* .sidebar-nav {
+        /* display: none; */
+    }
+
+    .sidebar-nav.active {
+        display: inline;
+    } */
+}
