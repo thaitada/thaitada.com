@@ -4,6 +4,11 @@ import gutil from "gulp-util";
 import postcss from "gulp-postcss";
 import cssImport from "postcss-import";
 import cssnext from "postcss-cssnext";
+import neatgrid from "postcss-neat";
+import nestedcss from "postcss-nested";
+import colorfunctions from "postcss-colour-functions";
+import hdBackgrounds from "postcss-at2x";
+import cssextend from "postcss-simple-extend";
 import BrowserSync from "browser-sync";
 import webpack from "webpack";
 import webpackConfig from "./webpack.conf";
@@ -16,20 +21,32 @@ import cssnano from "cssnano";
 const browserSync = BrowserSync.create();
 //const hugoBin = `./bin/hugo.${process.platform === "win32" ? "exe" : process.platform}`;
 const hugoBin = `hugo`;
-const defaultArgs = ["-d", "../dist", "-s", "site", "--themesDir", "themes"];
+const defaultArgs = ["-d", "../dist", "-s", "site"];
 
 gulp.task("hugo", (cb) => buildSite(cb));
 gulp.task("hugo-preview", (cb) => buildSite(cb, ["--buildDrafts", "--buildFuture"]));
-gulp.task("build", ["css", "js", "cms-assets", "hugo"]);
-gulp.task("build-preview", ["css", "js", "cms-assets", "hugo-preview"]);
+gulp.task("build", ["css", "js", "cms-assets", "images", "hugo"]);
+gulp.task("build-preview", ["css", "js", "cms-assets", "images", "hugo-preview"]);
 
+// gulp.task("css", () => (
+//   gulp.src("./src/css/*.css")
+//     .pipe(postcss([
+//       cssImport({from: "./src/css/main.css"}),
+//       cssnext(),
+//       cssnano(),
+//     ]))
+//     .pipe(gulp.dest("./dist/css"))
+//     .pipe(browserSync.stream())
+// ));
 gulp.task("css", () => (
   gulp.src("./src/css/*.css")
     .pipe(postcss([
       cssImport({from: "./src/css/main.css"}),
-      cssnext(),
-      cssnano(),
-    ]))
+      neatgrid(),
+      colorfunctions(),
+      nestedcss(),
+      hdBackgrounds(),
+      cssextend()]))
     .pipe(gulp.dest("./dist/css"))
     .pipe(browserSync.stream())
 ));
@@ -68,6 +85,12 @@ gulp.task("svg", () => {
     .pipe(inject(svgs, {transform: fileContents}))
     .pipe(gulp.dest("site/layouts/partials/"));
 });
+
+gulp.task("images", () => (
+  gulp.src("./src/img/**/*")
+    .pipe(gulp.dest("./dist/img"))
+    .pipe(browserSync.stream())
+));
 
 gulp.task("server", ["hugo", "css", "cms-assets", "js", "svg"], () => {
   browserSync.init({

@@ -2,7 +2,6 @@ backend:
   name: git-gateway
 
 media_folder: "src/img/gallery"
-public_folder: "img/gallery"
 
 collections:
   - name: food
@@ -32,3 +31,7 @@ collections:
     fields: # The fields each document in this collection have
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Gallery Image", name: "image", widget: "image"}
+
+ 
+# media_folder: "src/img/gallery" # Folder where user uploaded files should go
+# public_folder: "img/gallery"
