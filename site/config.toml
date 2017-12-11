@@ -2,26 +2,32 @@ baseurl = "/"
 languageCode = "en-us"
 title = "Thai Tada"
 
+
 [params]
   description = ""
+  phone = "703-435-7618"
 
 [[menu.main]]
     name = "Lunch"
     url  = "/lunch"
     weight = 1
 [[menu.main]]
+    name = "Dinner"
+    url  = "/dinner"
+    weight = 2
+[[menu.main]]
     name = "Drinks"
     url  = "/drinks"
-    weight = 2
+    weight = 3
 [[menu.main]]
     name = "About"
     url  = "/about"
-    weight = 3
-[[menu.main]]
-    name = "Gallery"
-    url  = "/gallery"
     weight = 4
-[[menu.main]]
-    name = "Make A Reservation"
-    url  = "/contact"
-    weight = 5
+# [[menu.main]]
+#     name = "Gallery"
+#     url  = "/gallery"
+#     weight = 4
+# [[menu.main]]
+#     name = "Make A Reservation"
+#     url  = "/contact"
+#     weight = 5

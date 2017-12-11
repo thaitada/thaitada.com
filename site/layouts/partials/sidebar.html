@@ -8,7 +8,9 @@
         {{ end }}</a>
       <p class="lead">{{ .Site.Params.description | markdownify }}</p>
     </div>
-
+    <ul class="sidebar-nav"> 
+      <li><a href="tel:{{ .Site.Params.phone }}">{{ .Site.Params.phone }}</a></li>
+    </ul>
     <ul class="sidebar-nav">
       <li><a href="/">Home</a> </li>
       {{ range .Site.Menus.main }}
