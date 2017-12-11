@@ -2,8 +2,10 @@ baseurl = "/"
 languageCode = "en-us"
 title = "Thai Tada"
 
+
 [params]
   description = ""
+  phone = "703-435-7618"
 
 [[menu.main]]
     name = "Lunch"
